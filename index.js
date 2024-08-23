@@ -1,7 +1,16 @@
-import { Router } from "express";
+import server from "./server.js";
 
-const router = Router();
+const startServer = async () => {
+  try {
+    const PORT = 8000;
+    server.listen(PORT, () => {
+      console.log(
+        `Express server started on port: ${PORT}`
+      );
+    });
+  } catch (error) {
+    console.error("Error:", error.message);
+  }
+};
 
-router.get("/test", (_, res) => res.json({ success: true }));
-
-export default router;
+startServer();
